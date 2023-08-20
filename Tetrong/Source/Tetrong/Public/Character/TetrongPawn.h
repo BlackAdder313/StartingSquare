@@ -85,13 +85,13 @@ public:
 	void Input_Move(const FInputActionValue& InputActionValue);
 
 	/** Handles mouse and stick look */
-	void Input_Look(const FInputActionValue& InputActionValue);
+	void MoveBlock(const FInputActionValue& InputActionValue);
 
 	/** Handles Jumping */
-	void Input_Jump(const FInputActionValue& InputActionValue);
+	void RotateBoard(const FInputActionValue& InputActionValue);
 
 	/** Handles Pew Pew */
-	void Input_Fire(const FInputActionValue& InputActionValue);
+	void FallBlock(const FInputActionValue& InputActionValue);
 
 	// End Enhanced Input Sample changes
 };

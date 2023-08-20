@@ -21,11 +21,11 @@ public:
 	static void InitializeNativeTags();
 
 	//Input Tags
-	FGameplayTag InputTag_Move;
-	FGameplayTag InputTag_Look_Mouse;
-	FGameplayTag InputTag_Look_Stick;
-	FGameplayTag InputTag_Jump;
-	FGameplayTag InputTag_Fire;
+	FGameplayTag MenuInput_Confirm;
+	FGameplayTag MenuInput_Cancel;
+	FGameplayTag GameInput_MoveBlock;
+	FGameplayTag GameInput_FallBlock;
+	FGameplayTag GameInput_RotateBoard;
 
 protected:
 

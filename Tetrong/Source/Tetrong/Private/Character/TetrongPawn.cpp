@@ -52,11 +52,9 @@ void ATetrongPawn::SetupPlayerInputComponent(class UInputComponent* PlayerInputC
 	const FTetrongGameplayTags& GameplayTags = FTetrongGameplayTags::Get();
 
 	//Bind Input actions by tag
-	enhancedInputComponent->BindActionByTag(InputConfig, GameplayTags.InputTag_Move, ETriggerEvent::Triggered, this, &ATetrongPawn::Input_Move);
-	enhancedInputComponent->BindActionByTag(InputConfig, GameplayTags.InputTag_Look_Mouse, ETriggerEvent::Triggered, this, &ATetrongPawn::Input_Look);
-	enhancedInputComponent->BindActionByTag(InputConfig, GameplayTags.InputTag_Look_Stick, ETriggerEvent::Triggered, this, &ATetrongPawn::Input_Look);
-	enhancedInputComponent->BindActionByTag(InputConfig, GameplayTags.InputTag_Fire, ETriggerEvent::Triggered, this, &ATetrongPawn::Input_Fire);
-	enhancedInputComponent->BindActionByTag(InputConfig, GameplayTags.InputTag_Jump, ETriggerEvent::Triggered, this, &ATetrongPawn::Input_Jump);
+	//enhancedInputComponent->BindActionByTag(InputConfig, GameplayTags.GameInput_MoveBlock,	ETriggerEvent::Triggered,	 this, &ATetrongPawn::MoveBlock);
+	enhancedInputComponent->BindActionByTag(InputConfig, GameplayTags.GameInput_FallBlock,	ETriggerEvent::Triggered,	 this, &ATetrongPawn::FallBlock);
+	enhancedInputComponent->BindActionByTag(InputConfig, GameplayTags.GameInput_RotateBoard,ETriggerEvent::Triggered,    this, &ATetrongPawn::RotateBoard);
 }
 
 void ATetrongPawn::OnPrimaryAction()
@@ -86,30 +84,33 @@ void ATetrongPawn::Input_Move(const FInputActionValue& InputActionValue)
 	}
 }
 
-void ATetrongPawn::Input_Look(const FInputActionValue& InputActionValue)
+void ATetrongPawn::MoveBlock(const FInputActionValue& InputActionValue)
 {
-	if (Controller != nullptr)
-	{
-		const FVector2D LookValue = InputActionValue.Get<FVector2D>();
+	const FVector2D LookValue = InputActionValue.Get<FVector2D>();
+	UE_LOG(LogBlueprintUserMessages, Log, TEXT("%f %f"), LookValue.X, LookValue.Y);
+	
+	//if (Controller != nullptr)
+	//{
+	//	//const FVector2D LookValue = InputActionValue.Get<FVector2D>();
 
-		if (LookValue.X != 0.0f)
-		{
-			TurnAtRate(LookValue.X);
-		}
+	//	if (LookValue.X != 0.0f)
+	//	{
+	//		TurnAtRate(LookValue.X);
+	//	}
 
-		if (LookValue.Y != 0.0f)
-		{
-			LookUpAtRate(LookValue.Y);
-		}
-	}
+	//	if (LookValue.Y != 0.0f)
+	//	{
+	//		LookUpAtRate(LookValue.Y);
+	//	}
+	//}
 }
 
-void ATetrongPawn::Input_Jump(const FInputActionValue& InputActionValue)
+void ATetrongPawn::RotateBoard(const FInputActionValue& InputActionValue)
 {
 	//Jump();
 }
 
-void ATetrongPawn::Input_Fire(const FInputActionValue& InputActionValue)
+void ATetrongPawn::FallBlock(const FInputActionValue& InputActionValue)
 {
 	OnPrimaryAction();
 }

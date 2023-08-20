@@ -15,11 +15,11 @@ void FTetrongGameplayTags::InitializeNativeTags()
 
 void FTetrongGameplayTags::AddAllTags(UGameplayTagsManager& Manager)
 {
-	AddTag(InputTag_Move, "InputTag.Move", "Move input.");
-	AddTag(InputTag_Look_Mouse, "InputTag.Look.Mouse", "Look (mouse) input.");
-	AddTag(InputTag_Look_Stick, "InputTag.Look.Stick", "Look (stick) input.");
-	AddTag(InputTag_Jump, "InputTag.Jump", "Jump input");
-	AddTag(InputTag_Fire, "InputTag.Fire", "Fire input.");
+	AddTag(MenuInput_Confirm,		"MenuInput.Confirm",	"Confirm menu option");
+	AddTag(MenuInput_Cancel,		"MenuInput.Cancel",		"Cancel menu option");
+	AddTag(GameInput_MoveBlock,		"GameInput.MoveBlock",	"Move block left or right");
+	AddTag(GameInput_FallBlock,		"GameInput.FallBlock",  "Push block into falling faster");
+	AddTag(GameInput_RotateBoard,	"GameInput.RotateBoard","Rotate board to shuffle blocks.");
 }
 
 void FTetrongGameplayTags::AddTag(FGameplayTag& OutTag, const ANSICHAR* TagName, const ANSICHAR* TagComment)
